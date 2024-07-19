@@ -1,5 +1,5 @@
-import React from "react";
-import { FaAngleDown, FaRegUser } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaAngleDown, FaAngleRight, FaRegUser } from "react-icons/fa";
 import { FaShoppingBag } from "react-icons/fa";
 import { BsArrowDown, BsMenuApp, BsMenuButton } from "react-icons/bs";
 
@@ -9,6 +9,7 @@ import "../../App.css";
 import { Button } from "@mui/material";
 import { IoMenu } from "react-icons/io5";
 function Header() {
+  const [isOpenAllCategory, setIsOpenCategory] = useState(false);
   return (
     <div>
       <div className="bg-[#233A95] w-full text-center text-white py-2">
@@ -55,23 +56,164 @@ function Header() {
       {/*Nav bar codde nave  */}
 
       <nav className="md:px-[80px] px-5 flex items-center justify-between border-b pb-2 shadow-sm">
-        <div className=" bg-[#2BBEF9] px-3 py-1 rounded-full ">
-          <Button>
+        <div className="allCategory relative bg-[#2BBEF9] px-3 py-1 rounded-full ">
+          <Button onClick={() => setIsOpenCategory((prev) => !prev)}>
             <IoMenu className="text-white " />
             <p className="text-white px-1"> All Category</p>
             <FaAngleDown className="text-white " />
           </Button>
+
+          <ul
+            className={`allCategoryList ${
+              isOpenAllCategory ? "opacity-100 visible" : "opacity-0 hidden"
+            } duration-500 space-y-3  absolute rounded-md  z-[100] top-12 p-2 py-3 left-1 shadow-md min-w-[200px]`}
+          >
+            <li>
+              <Button>men</Button>
+            </li>
+            <li className="relative">
+              <Button>
+                men
+                <FaAngleDown />
+              </Button>
+
+              <ul className="sideSubMenu absolute left-[105%] top-[-10px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <Button>men</Button>
+            </li>
+            <li>
+              <Button>men</Button>
+            </li>
+            <li className="relative">
+              <Button>
+                men <FaAngleDown />
+              </Button>
+
+              <ul className="sideSubMenu absolute left-[105%] top-[-10px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+                <li>
+                  <Button>fashion</Button>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <Button>men</Button>
+            </li>
+            <li>
+              <Button>men</Button>
+            </li>
+            <li>
+              <Button>men</Button>
+            </li>
+          </ul>
         </div>
         <div className="w-[70%]">
-          <ul className=" flex justify-start items-start gap-5">
-            <li>
-              <Button>Men</Button>
+          <ul className="navMenu flex justify-start items-start gap-5">
+            <li className="relative">
+              <Button>
+                Men <FaAngleDown />
+              </Button>
+              <ul className="space-y-3 navSubMenu absolute top-11 p-2 py-3 z-[100] min-w-[150px] rounded-md shadow-md">
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+              </ul>
             </li>
             <li>
               <Button>Women</Button>
             </li>
-            <li>
-              <Button>Kits</Button>
+            <li className="relative">
+              <Button>
+                Kits <FaAngleDown />
+              </Button>
+              <ul className="space-y-3 navSubMenu absolute top-11 p-2 py-3 z-[100] min-w-[150px] rounded-md shadow-md">
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+                <li>
+                  <Button>T-shirt</Button>
+                </li>
+              </ul>
             </li>
             <li>
               <Button>Fashion</Button>

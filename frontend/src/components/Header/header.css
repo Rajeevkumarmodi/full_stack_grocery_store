@@ -40,3 +40,73 @@
         }
     }
 }
+
+/* nav */
+
+
+.navMenu {
+
+    .navSubMenu {
+        visibility: hidden;
+        transition: all 0.3s;
+        opacity: 0;
+
+        li {
+            width: 100%;
+
+            button {
+                width: 100%;
+                justify-content: start;
+                padding-block: 2px;
+            }
+
+            :hover {
+                background-color: rgb(225, 223, 223);
+            }
+        }
+
+    }
+
+    li:hover .navSubMenu {
+        transition: all 0.3s;
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+}
+
+nav {
+    /* all category */
+
+    .allCategory {
+        .allCategoryList {
+            li {
+                width: full;
+
+                button {
+                    padding-block: 2px;
+                    width: 100%;
+                    justify-content: start;
+                    text-transform: capitalize;
+
+                }
+            }
+        }
+
+        .sideSubMenu {
+            visibility: hidden;
+            transition: all 0.3s;
+            opacity: 0;
+
+        }
+
+        li:hover .sideSubMenu {
+            visibility: visible;
+            transition: all 0.3s;
+            opacity: 1;
+        }
+
+    }
+
+}

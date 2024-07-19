@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { BsChevronDown } from "react-icons/bs";
-import { IoSearch } from "react-icons/io5";
+import { IoClose, IoSearch } from "react-icons/io5";
 import "./header.css";
 import { Dialog } from "@mui/material";
 
@@ -27,7 +27,11 @@ const CountryDropDown = () => {
 
       <div>
         <Dialog className="countryDropDown" open={isOpenModal}>
-          <div className="p-6 dropDownBox">
+          <div className="p-6 dropDownBox relative">
+            <IoClose
+              onClick={() => setIsOpenModal(false)}
+              className="absolute top-2 right-3 text-2xl text-red-400 cursor-pointer"
+            />
             <h3 className="text-xl font-semibold mb-1">
               Choose your Delevery Location
             </h3>
