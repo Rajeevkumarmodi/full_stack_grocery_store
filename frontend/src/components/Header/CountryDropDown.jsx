@@ -1,12 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { BsChevronDown } from "react-icons/bs";
 import { IoClose, IoSearch } from "react-icons/io5";
 import "./header.css";
 import { Dialog } from "@mui/material";
+import allCountry from "../../jsonData/allCountry";
 
 const CountryDropDown = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [countrysData, setCountrysData] = useState(allCountry);
+  let [searchText, setSearchText] = useState("");
+  let [selectedCountry, setSelectedCountry] = useState("");
+
+  function handleClickLi(data) {
+    setSelectedCountry(data);
+    setIsOpenModal(false);
+    setSearchText("");
+  }
+
+  useEffect(() => {
+    if (searchText !== "") {
+      let searchResult = countrysData.filter((data) =>
+        data.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+      );
+      setCountrysData(searchResult);
+    } else {
+      setCountrysData(allCountry);
+    }
+  }, [searchText]);
 
   return (
     <div className="countryDropDown">
@@ -17,7 +38,11 @@ const CountryDropDown = () => {
         <div className="text-start text-black text-[10px] ">
           <p className="text-gray-400">Your Location</p>
           <p className="font-bold text-[12px] text-blue-700">
-            Select a Location
+            {selectedCountry !== ""
+              ? selectedCountry.length > 12
+                ? selectedCountry.substring(0, 12) + "..."
+                : selectedCountry
+              : " Select a Location"}
           </p>
         </div>
         <BsChevronDown className="text-black " />
@@ -44,6 +69,7 @@ const CountryDropDown = () => {
                 className="w-[100%] outline-none border-[1px] rounded-md  px-5 py-3 bg-[#F3F4F7] border-gray-400"
                 type="text"
                 placeholder="Search fro Products"
+                onChange={(e) => setSearchText(e.target.value)}
               />
               <Button className="searchBtn">
                 <IoSearch className="text-3xl" />
@@ -53,42 +79,17 @@ const CountryDropDown = () => {
             {/* list */}
             <div className="max-h-[300px] overflow-y-auto">
               <ul className="dropDownList mt-2 space-y-3">
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
-                <li className="w-full hover:bg-gray-200">
-                  <Button>India</Button>
-                </li>
+                {countrysData?.map((data, i) => (
+                  <li
+                    onClick={() => handleClickLi(data)}
+                    key={i}
+                    className={`w-full hover:bg-gray-200 ${
+                      selectedCountry === data ? "bg-gray-200" : ""
+                    }`}
+                  >
+                    <Button>{data}</Button>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
