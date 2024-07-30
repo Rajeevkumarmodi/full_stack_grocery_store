@@ -1,0 +1,39 @@
+.homePage {
+    .viewAllBtn {
+        color: rgb(216, 216, 216);
+        border: 1px solid rgb(189, 188, 188);
+        border-radius: 20px;
+        padding: 3px 15px;
+        text-transform: capitalize;
+    }
+
+    .best-selling {
+
+        .slick-slider {
+            .slick-next {
+                right: 15px;
+                z-index: 100;
+
+                &::before {
+                    color: gray;
+                    font-size: 30px;
+                }
+            }
+
+            .slick-prev {
+                left: -35px;
+                z-index: 100;
+
+                &::before {
+                    font-size: 30px;
+                    color: gray;
+                }
+            }
+
+        }
+    }
+
+
+    /* .slick-slider */
+
+}

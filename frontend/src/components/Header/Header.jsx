@@ -20,7 +20,7 @@ function Header() {
       </div>
 
       {/*Header codde start  */}
-      <header className="md:px-[80px] px-5 py-5 ">
+      <header className="md:px-[50px] px-5 py-5 ">
         <div className="flex items-center justify-between gap-7 ">
           <div className=" flex flex-col items-center gap-1">
             <img
@@ -55,7 +55,7 @@ function Header() {
 
       {/*Nav bar codde nave  */}
 
-      <nav className="md:px-[80px] px-5 flex items-center justify-between border-b pb-2 shadow-sm">
+      <nav className="md:px-[50px] px-5 flex items-center justify-between border-b pb-2 shadow-sm">
         <div className="allCategory relative bg-[#2BBEF9] px-3 py-1 rounded-full ">
           <Button onClick={() => setIsOpenCategory((prev) => !prev)}>
             <IoMenu className="text-white " />
@@ -66,7 +66,7 @@ function Header() {
           <ul
             className={`allCategoryList ${
               isOpenAllCategory ? "opacity-100 visible" : "opacity-0 hidden"
-            } duration-500 space-y-3  absolute rounded-md  z-[100] top-12 p-2 py-3 left-1 shadow-md min-w-[200px]`}
+            } duration-500 space-y-3 bg-white absolute rounded-md  z-[100] top-12 p-2 py-3 left-1 shadow-md min-w-[200px]`}
           >
             <li>
               <Button>men</Button>
@@ -77,7 +77,7 @@ function Header() {
                 <FaAngleDown />
               </Button>
 
-              <ul className="sideSubMenu absolute left-[105%] top-[-10px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
+              <ul className="sideSubMenu bg-white absolute left-[105%] top-[-10px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
                 <li>
                   <Button>fashion</Button>
                 </li>
@@ -122,7 +122,7 @@ function Header() {
                 men <FaAngleDown />
               </Button>
 
-              <ul className="sideSubMenu absolute left-[105%] top-[-10px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
+              <ul className="sideSubMenu bg-white absolute left-[105%] top-[-10px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
                 <li>
                   <Button>fashion</Button>
                 </li>
@@ -172,7 +172,7 @@ function Header() {
               <Button>
                 Men <FaAngleDown />
               </Button>
-              <ul className="space-y-3 navSubMenu absolute top-11 p-2 py-3 z-[100] min-w-[150px] rounded-md shadow-md">
+              <ul className="space-y-3 navSubMenu absolute bg-white top-11 p-2 py-3 z-[100] min-w-[150px] rounded-md shadow-md">
                 <li>
                   <Button>T-shirt</Button>
                 </li>
@@ -197,7 +197,7 @@ function Header() {
               <Button>
                 Kits <FaAngleDown />
               </Button>
-              <ul className="space-y-3 navSubMenu absolute top-11 p-2 py-3 z-[100] min-w-[150px] rounded-md shadow-md">
+              <ul className="space-y-3 navSubMenu bg-white absolute top-11 p-2 py-3 z-[100] min-w-[150px] rounded-md shadow-md">
                 <li>
                   <Button>T-shirt</Button>
                 </li>
