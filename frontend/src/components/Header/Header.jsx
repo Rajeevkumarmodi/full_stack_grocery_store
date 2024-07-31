@@ -35,7 +35,7 @@ function Header() {
           <CountryDropDown />
           <SearchBox />
 
-          <div className="userContainer flex items-center justify-center  w-[50px] h-[50px] rounded-[50%] border-[1px] border-gray-300 text-center">
+          <div className="userContainer flex items-center justify-center  w-[40px] h-[40px] rounded-[50%] border-[1px] border-gray-300 text-center">
             <Button className="userBtn">
               <FaRegUser className="text-xl text-black" />
             </Button>

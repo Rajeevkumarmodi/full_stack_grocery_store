@@ -19,7 +19,7 @@ function TopCategory() {
       {/* <div className="w-[100vw] flex items-center gap-4"> */}
       <Slider {...settings}>
         {arr.map((_, i) => (
-          <div className="my-10 bg-[#FEEFEA] md:max-w-[120px] text-center py-4 rounded-lg cursor-pointer hover:border-green-500 hover:border-[1px] shadow-sm hover:bg-gray-50 duration-200 hover:shadow-md hover:shadow-gray-300">
+          <div className="my-10 bg-[#FEEFEA] md:max-w-[120px] text-center py-4 rounded-lg cursor-pointer hover:border-green-500 hover:border-[1px] shadow-sm hover:bg-white duration-200 hover:shadow-md hover:shadow-gray-300">
             <img
               className=""
               src="https://nest.botble.com/storage/product-categories/image-3.png"
