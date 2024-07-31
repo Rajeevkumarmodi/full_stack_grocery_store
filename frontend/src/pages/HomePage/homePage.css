@@ -34,6 +34,63 @@
     }
 
 
-    /* .slick-slider */
+    /* top categories */
+
+    .topCategories {
+        .slick-slider {
+            margin-right: 50px;
+
+            .slick-next {
+                right: 90px;
+                z-index: 100;
+                top: -10px;
+
+                &::before {
+                    color: green;
+                    font-size: 35px;
+                }
+            }
+
+            .slick-prev {
+                right: 150px !important;
+                top: -20px;
+                left: auto;
+                z-index: 100;
+                padding: 20px;
+
+                &::before {
+                    font-size: 35px;
+                    color: green;
+                }
+            }
+
+        }
+
+    }
+
+
+    /* coupon section */
+
+    .couponSction {
+        .subscribeBtn {
+            background-color: blue;
+            color: white;
+            position: absolute;
+            right: 15px;
+            padding: 10px 15px;
+            text-transform: capitalize;
+        }
+    }
+
+
+
+    /* footer */
+
+    footer {
+        ul li a {
+            text-decoration: none;
+            color: rgb(136, 136, 136);
+        }
+    }
 
 }

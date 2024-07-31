@@ -51,7 +51,11 @@ const CountryDropDown = () => {
       {/* drop down */}
 
       <div>
-        <Dialog className="countryDropDown" open={isOpenModal}>
+        <Dialog
+          className="countryDropDown"
+          onClose={() => setIsOpenModal(false)}
+          open={isOpenModal}
+        >
           <div className="p-6 dropDownBox relative">
             <IoClose
               onClick={() => setIsOpenModal(false)}
