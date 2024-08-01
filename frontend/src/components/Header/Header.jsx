@@ -71,13 +71,13 @@ function Header() {
             <li>
               <Button>men</Button>
             </li>
-            <li className="relative">
+            <li className="">
               <Button>
                 men
                 <FaAngleDown />
               </Button>
 
-              <ul className="sideSubMenu bg-white absolute left-[105%] top-[-10px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
+              <ul className="sideSubMenu bg-white absolute left-[100%] top-[5px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
                 <li>
                   <Button>fashion</Button>
                 </li>
@@ -117,12 +117,12 @@ function Header() {
             <li>
               <Button>men</Button>
             </li>
-            <li className="relative">
+            <li className="">
               <Button>
                 men <FaAngleDown />
               </Button>
 
-              <ul className="sideSubMenu bg-white absolute left-[105%] top-[-10px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
+              <ul className="sideSubMenu bg-white absolute left-[100%] top-[5px] min-w-[200px] px-2 py-2 space-y-2 border-[1px] border-gray-200">
                 <li>
                   <Button>fashion</Button>
                 </li>

@@ -10,7 +10,6 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
 import "./homePage.css";
 import "../../App.css";
-import Footer from "../../components/footer/Footer";
 import TopCategory from "./components/TopCategory";
 
 function Home() {
@@ -26,7 +25,6 @@ function Home() {
   return (
     <div className="homePage w-full">
       <HomeBanner />
-
       <TopCategory />
       <div className=" md:mx-[50px]">
         <div className="my-8">
@@ -125,8 +123,6 @@ function Home() {
           <img src={coupon} alt="coupon image" />
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

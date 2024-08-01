@@ -35,3 +35,105 @@ body {
 ::-webkit-scrollbar-track {
     background-color: rgb(247, 246, 246);
 }
+
+
+
+
+/* product details modal css */
+
+.productDetailDialog {
+    .MuiPaper-root {
+        max-width: 64rem;
+    }
+}
+
+.productDescraption {
+    .contentContainer {
+        .closeBtn {
+            position: absolute;
+            border: 1px solid gray;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            top: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            z-index: 200;
+        }
+
+        .MuiRating-root {
+            .css-dqr9h-MuiRating-label {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .slider-container {
+        .slick-dots {
+            position: static;
+
+            li {
+                width: 80px;
+                margin-right: 5px;
+                height: fit-content;
+
+                a {
+                    img {
+                        border-radius: 5px;
+                        box-shadow: 0px 0px 2px 0px gray;
+                    }
+                }
+            }
+
+            .slick-active {
+                border: 1px solid blue;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .decreaseQtyBtn,
+    .increaseQtyBtn {
+        border: 1px solid gray;
+        height: 40px;
+        min-width: 40px;
+        border-radius: 50%;
+        background-color: rgb(236, 235, 235);
+
+        &:hover {
+            background: orange;
+        }
+    }
+
+    .addToCartBtn {
+        background-color: rgb(1, 1, 166);
+        color: white;
+        padding-inline: 30px;
+        padding-block: 7px;
+        border-radius: 50px;
+        text-transform: capitalize;
+
+        &:hover {
+            background-color: rgb(3, 3, 220);
+        }
+    }
+
+    .addToWishlist {
+        border: 1px solid gray;
+        background-color: white;
+        color: gray;
+        padding-inline: 10px;
+        padding-block: 5px;
+        border-radius: 50px;
+        font-size: 12px;
+
+    }
+
+    .allLinkes {
+        a {
+            text-decoration: none;
+            color: rgb(104, 104, 104);
+        }
+    }
+
+}

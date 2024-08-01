@@ -29,7 +29,7 @@ function Footer() {
     borderRadius: "50%",
     position: "fixed",
     bottom: "20px",
-    right: "20px !important",
+    right: "20px",
     backgroundColor: "#ffffff",
     zIndex: "200",
     boxShadow: "0px 0px 4px 0px gray",
@@ -38,7 +38,6 @@ function Footer() {
   return (
     <footer className="relative">
       {/* up arrow */}
-      {/* <div className="po"> */}
       <Button
         style={upArrow}
         onClick={() => {
@@ -47,7 +46,6 @@ function Footer() {
       >
         <MdKeyboardArrowUp className="text-3xl" />
       </Button>
-      {/* </div> */}
       <div className="md:px-[50px] px-[20px] bg-[#F7F8FD] py-12">
         <div className="flex justify-between flex-wrap pb-10 border-b">
           <p className="flex items-center gap-2">
