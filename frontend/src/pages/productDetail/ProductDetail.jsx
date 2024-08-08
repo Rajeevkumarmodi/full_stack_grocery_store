@@ -8,13 +8,15 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaCartPlus } from "react-icons/fa";
 
 import "../../App.css";
+import AdditionalInfo from "./components/AdditionalInfo";
+import Reviews from "./components/Reviews";
 
 function ProductDetail() {
   const [itemQty, setItemQty] = useState(0);
   const [selectedTab, setSelectedTab] = useState("description");
   return (
-    <div className="bg-[#F7F8FD] md:px-[50px] py-5">
-      <div className="bg-white p-10">
+    <div className="bg-[#F7F8FD]  md:px-[50px] py-5">
+      <div className="bg-white p-10 rounded-md  shadow-sm">
         <h2 className="text-2xl mb-4">
           All Natural Italian-Style Chicken Meatballs
         </h2>
@@ -137,7 +139,7 @@ function ProductDetail() {
         </div>
       </div>
 
-      <div className="bg-white mt-10 px-10 py-5">
+      <div className="bg-white rounded-md shadow-md mt-10 px-10 py-5">
         <ul className="flex pb-4 border-b-2">
           <li>
             <Button onClick={() => setSelectedTab("description")}>
@@ -205,9 +207,9 @@ function ProductDetail() {
               </p>
             </div>
           ) : selectedTab === "additional-info" ? (
-            <div> info</div>
+            <AdditionalInfo />
           ) : (
-            <div>review</div>
+            <Reviews />
           )}
         </div>
       </div>
