@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { SlSizeFullscreen } from "react-icons/sl";
 import { FaRegHeart } from "react-icons/fa";
-import ProductDetails from "../../../components/ProductDetails";
+import ProductDetailsModal from "../../../components/ProductDetailsModal";
 
 function ProductCard() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <ProductDetails isOpen={isOpen} setIsOpen={setIsOpen} />
+      <ProductDetailsModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="productCard relative px-3 w-[210px] border-[1px] border-gray-200 ">
         <p className="bg-[#2BBEF9] z-[100] absolute top-5 left-4 px-3 py-1 rounded-md text-white font-bold">
           23%

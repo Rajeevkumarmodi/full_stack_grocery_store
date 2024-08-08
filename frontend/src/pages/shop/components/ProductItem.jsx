@@ -5,14 +5,14 @@ import { FaRegHeart } from "react-icons/fa";
 import { LuArrowDownUp } from "react-icons/lu";
 import { FaCartArrowDown } from "react-icons/fa";
 
-import ProductDetails from "../../../components/ProductDetails";
+import ProductDetailsModal from "../../../components/ProductDetailsModal";
 import { Rating } from "@mui/material";
 
 function ProductItem({ showItemEachRow }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="productItem">
-      <ProductDetails isOpen={isOpen} setIsOpen={setIsOpen} />
+      <ProductDetailsModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="productCard relative px-3 border-[1px] border-gray-200 ">
         <p className="bg-[#2BBEF9] z-[100] absolute top-5 left-4 px-3 py-1 rounded-md text-white font-bold">
           23%

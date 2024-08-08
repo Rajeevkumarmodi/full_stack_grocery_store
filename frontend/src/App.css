@@ -39,6 +39,100 @@ body {
 
 
 
+/* product detail images slider css */
+
+.slider-container {
+    .slick-dots {
+        position: static;
+
+        li {
+            width: 80px;
+            margin-right: 5px;
+            height: fit-content;
+
+            a {
+                img {
+                    border-radius: 5px;
+                    box-shadow: 0px 0px 2px 0px gray;
+                }
+            }
+        }
+
+        .slick-active {
+            border: 1px solid blue;
+            border-radius: 5px;
+        }
+    }
+
+    /* next and previous button */
+
+    .slick-prev {
+        /* background: #000; */
+
+        &::before {
+            color: red;
+            font-size: 25px;
+            position: absolute;
+            left: 0px;
+        }
+    }
+
+    .slick-next {
+        /* background: #000; */
+
+        &::before {
+            color: red;
+            font-size: 25px;
+            position: absolute;
+            right: 40px;
+            z-index: 100;
+        }
+    }
+}
+
+
+/* common button */
+
+
+#decreaseQtyBtn,
+#increaseQtyBtn {
+    background-color: red;
+    border: 1px solid gray;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background-color: rgb(236, 235, 235);
+
+    &:hover {
+        background: orange;
+    }
+}
+
+#addToCartBtn {
+    background-color: rgb(1, 1, 166);
+    color: white;
+    padding-inline: 25px;
+    padding-block: 7px;
+    border-radius: 50px;
+    text-transform: capitalize;
+
+    &:hover {
+        background-color: rgb(3, 3, 220);
+    }
+}
+
+
+#addToWishlist {
+    border: 1px solid gray;
+    background-color: white;
+    color: gray;
+    padding-inline: 10px;
+    padding-block: 5px;
+    border-radius: 50px;
+    font-size: 12px;
+
+}
+
 
 /* product details modal css */
 
@@ -69,66 +163,7 @@ body {
         }
     }
 
-    .slider-container {
-        .slick-dots {
-            position: static;
 
-            li {
-                width: 80px;
-                margin-right: 5px;
-                height: fit-content;
-
-                a {
-                    img {
-                        border-radius: 5px;
-                        box-shadow: 0px 0px 2px 0px gray;
-                    }
-                }
-            }
-
-            .slick-active {
-                border: 1px solid blue;
-                border-radius: 5px;
-            }
-        }
-    }
-
-    .decreaseQtyBtn,
-    .increaseQtyBtn {
-        border: 1px solid gray;
-        height: 40px;
-        min-width: 40px;
-        border-radius: 50%;
-        background-color: rgb(236, 235, 235);
-
-        &:hover {
-            background: orange;
-        }
-    }
-
-    .addToCartBtn {
-        background-color: rgb(1, 1, 166);
-        color: white;
-        padding-inline: 30px;
-        padding-block: 7px;
-        border-radius: 50px;
-        text-transform: capitalize;
-
-        &:hover {
-            background-color: rgb(3, 3, 220);
-        }
-    }
-
-    .addToWishlist {
-        border: 1px solid gray;
-        background-color: white;
-        color: gray;
-        padding-inline: 10px;
-        padding-block: 5px;
-        border-radius: 50px;
-        font-size: 12px;
-
-    }
 
     .allLinkes {
         a {

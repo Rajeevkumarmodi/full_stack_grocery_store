@@ -1,31 +1,15 @@
 import React, { useState } from "react";
 import { Button, Dialog, Link } from "@mui/material";
 import Rating from "@mui/material/Rating";
-import { MdClose, MdJoinRight } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { LuArrowDownUp } from "react-icons/lu";
 import { FaRegHeart } from "react-icons/fa6";
-import Slider from "react-slick";
 import "../App.css";
+import ProductDetailImages from "./ProductDetailImages";
 
-function ProductDetails({ isOpen, setIsOpen }) {
+function ProductDetailsModal({ isOpen, setIsOpen }) {
   const [itemQty, setItemQty] = useState(0);
-
-  const settings = {
-    customPaging: function (i) {
-      return (
-        <a>
-          <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg" />
-        </a>
-      );
-    },
-    dots: true,
-    dotsClass: "slick-dots slick-thumb",
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
 
   return (
     <div className="productDetailModal">
@@ -63,18 +47,8 @@ function ProductDetails({ isOpen, setIsOpen }) {
           </div>
 
           <div className="flex gap-4 mt-14">
-            <div className="slider-container w-[40%]">
-              <Slider {...settings}>
-                <div>
-                  <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg" />
-                </div>
-                <div>
-                  <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg" />
-                </div>
-                <div>
-                  <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg" />
-                </div>
-              </Slider>
+            <div className="w-[40%]">
+              <ProductDetailImages />
             </div>
             <div>
               <div>
@@ -99,23 +73,23 @@ function ProductDetails({ isOpen, setIsOpen }) {
                 <div className="flex items-center gap-4">
                   <Button
                     onClick={() => setItemQty(itemQty - 1)}
-                    className="decreaseQtyBtn"
+                    id="decreaseQtyBtn"
                   >
                     <span className="text-3xl text-gray-500">-</span>
                   </Button>
                   <p>{itemQty}</p>
                   <Button
                     onClick={() => setItemQty(itemQty + 1)}
-                    className="increaseQtyBtn"
+                    id="increaseQtyBtn"
                   >
                     <span className="text-3xl text-gray-500">+</span>
                   </Button>
 
-                  <Button className="addToCartBtn">Add to cart</Button>
+                  <Button id="addToCartBtn">Add to cart</Button>
                 </div>
 
                 <div className="my-7 space-x-3">
-                  <Button className="addToWishlist">
+                  <Button id="addToWishlist">
                     <FaRegHeart />
                     <span className="pl-1">Add to wishlist</span>
                   </Button>
@@ -169,4 +143,4 @@ function ProductDetails({ isOpen, setIsOpen }) {
   );
 }
 
-export default ProductDetails;
+export default ProductDetailsModal;
