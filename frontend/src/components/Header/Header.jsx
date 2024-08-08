@@ -8,8 +8,13 @@ import SearchBox from "./SearchBox";
 import "../../App.css";
 import { Button } from "@mui/material";
 import { IoMenu } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
 function Header() {
   const [isOpenAllCategory, setIsOpenCategory] = useState(false);
+
+  // const endPoint = useLocation();
+  // console.log(endPoint);
+
   return (
     <div>
       <div className="bg-[#233A95] w-full text-center text-white py-2">

@@ -27,6 +27,7 @@ body {
     width: 8px;
 }
 
+
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: rgb(216, 215, 215);
@@ -136,4 +137,17 @@ body {
         }
     }
 
+}
+
+
+/* shop page */
+
+.shopPage {
+    .productItem {
+        .addToWishlist {
+            padding: 3px 8px;
+            border: 1px solid rgb(85, 85, 249);
+            border-radius: 50px;
+        }
+    }
 }
