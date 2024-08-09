@@ -3,14 +3,14 @@ import Sidebar from "./components/Sidebar";
 import banner from "../../assets/shop-banner.png";
 import Navigator from "../../components/Navigator";
 import { IoMenuSharp } from "react-icons/io5";
-import { HiViewGrid } from "react-icons/hi";
 import { CgMenuGridO } from "react-icons/cg";
 import { TfiLayoutGrid4 } from "react-icons/tfi";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ProductItem from "./components/ProductItem";
+import ProductItem from "../../components/ProductItem";
+import Pagination from "@mui/material/Pagination";
 
 function Shop() {
   const [sortBy, setSortBy] = useState(null);
@@ -211,7 +211,7 @@ function Shop() {
           {/* product item */}
 
           <div
-            className={`grid  ${
+            className={`grid gap-4  ${
               showItemEachRow === 4
                 ? "grid-cols-4"
                 : showItemEachRow === 3
@@ -231,6 +231,11 @@ function Shop() {
             <ProductItem showItemEachRow={showItemEachRow} />
             <ProductItem showItemEachRow={showItemEachRow} />
             <ProductItem showItemEachRow={showItemEachRow} />
+          </div>
+
+          {/* pagination */}
+          <div className="  mr-auto my-8  ">
+            <Pagination count={10} color="primary" />
           </div>
         </div>
       </div>

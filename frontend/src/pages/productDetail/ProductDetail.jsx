@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Rating, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import ProductDetailImages from "../../components/ProductDetailImages";
@@ -10,10 +10,16 @@ import { FaCartPlus } from "react-icons/fa";
 import "../../App.css";
 import AdditionalInfo from "./components/AdditionalInfo";
 import Reviews from "./components/Reviews";
+import ProductItem from "../../components/ProductItem";
 
 function ProductDetail() {
   const [itemQty, setItemQty] = useState(0);
   const [selectedTab, setSelectedTab] = useState("description");
+
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="bg-[#F7F8FD]  md:px-[50px] py-5">
       <div className="bg-white p-10 rounded-md  shadow-sm">
@@ -211,6 +217,36 @@ function ProductDetail() {
           ) : (
             <Reviews />
           )}
+        </div>
+      </div>
+
+      {/* Related products */}
+
+      <div className="my-16 ">
+        <h3 className="uppercase text-base font-semibold my-2 ">
+          Related Products
+        </h3>
+        <div className="flex  gap-4">
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+        </div>
+      </div>
+
+      {/* Recent view products */}
+
+      <div className="my-10 ">
+        <h3 className="uppercase text-base font-semibold my-2 ">
+          Recently Viewed Products
+        </h3>
+        <div className="flex  gap-4">
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import { SlSizeFullscreen } from "react-icons/sl";
 import { FaRegHeart } from "react-icons/fa";
 import ProductDetailsModal from "../../../components/ProductDetailsModal";
+import { Link } from "react-router-dom";
 
 function ProductCard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,11 +27,13 @@ function ProductCard() {
           </div>
         </div>
         <div className="productContent space-y-2">
-          <img
-            className="duration-200 z-10"
-            src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/product-image-60-346x310.jpg"
-            alt=""
-          />
+          <Link to="/product/1">
+            <img
+              className="duration-200 z-10 cursor-pointer"
+              src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/product-image-60-346x310.jpg"
+              alt=""
+            />
+          </Link>
           <p className="font-bold">
             Angie’s Boomchickapop Sweet & Salty Kettle Corn
           </p>

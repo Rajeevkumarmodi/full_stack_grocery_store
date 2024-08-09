@@ -5,15 +5,16 @@ import { FaRegHeart } from "react-icons/fa";
 import { LuArrowDownUp } from "react-icons/lu";
 import { FaCartArrowDown } from "react-icons/fa";
 
-import ProductDetailsModal from "../../../components/ProductDetailsModal";
+import ProductDetailsModal from "./ProductDetailsModal";
 import { Rating } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function ProductItem({ showItemEachRow }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="productItem">
       <ProductDetailsModal isOpen={isOpen} setIsOpen={setIsOpen} />
-      <div className="productCard relative px-3 border-[1px] border-gray-200 ">
+      <div className="productCard relative px-3 border-[1px] border-gray-200 rounded-md shadow-md">
         <p className="bg-[#2BBEF9] z-[100] absolute top-5 left-4 px-3 py-1 rounded-md text-white font-bold">
           23%
         </p>
@@ -33,13 +34,15 @@ function ProductItem({ showItemEachRow }) {
             showItemEachRow === 1 ? " flex flex-row gap-3" : ""
           }`}
         >
-          <img
-            className={`duration-200 ${
-              showItemEachRow === 1 ? "h-60" : "h-auto"
-            } bg-gray-600`}
-            src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/product-image-60-346x310.jpg"
-            alt="product image"
-          />
+          <Link to="/product/1">
+            <img
+              className={`duration-200 ${
+                showItemEachRow === 1 ? "h-60" : "h-auto"
+              } bg-gray-600`}
+              src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/product-image-60-346x310.jpg"
+              alt="product image"
+            />
+          </Link>
           <div className={`${showItemEachRow === 1 ? "space-y-3 z-30" : ""}`}>
             <p className="font-bold">
               Angie’s Boomchickapop Sweet & Salty Kettle Corn

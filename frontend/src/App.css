@@ -177,6 +177,12 @@ body {
 
 /* shop page */
 
+/* pagination */
+
+.css-wjh20t-MuiPagination-ul {
+    justify-content: center;
+}
+
 .shopPage {
     .productItem {
         .addToWishlist {
@@ -185,14 +191,4 @@ body {
             border-radius: 50px;
         }
     }
-}
-
-
-/* review from  */
-
-#submitBtn {
-    margin-top: 2.5rem;
-    background-color: #233A95;
-    padding: 8px 20px;
-    color: white;
 }
