@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import banner1 from "../../assets/sidebar-banner-1.gif";
 import banner2 from "../../assets/sidebar-banner-2.png";
@@ -11,8 +11,15 @@ import { MdOutlineEmail } from "react-icons/md";
 import "./homePage.css";
 import "../../App.css";
 import TopCategory from "./components/TopCategory";
+import { contextProvider } from "../../context/Context";
 
 function Home() {
+  const { setShowHeaderFooter } = contextProvider();
+
+  useEffect(() => {
+    setShowHeaderFooter(true);
+  }, []);
+
   const settings = {
     dots: false,
     infinite: true,

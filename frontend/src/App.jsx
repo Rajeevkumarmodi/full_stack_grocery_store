@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomePage/Home";
 import Header from "./components/Header/Header";
@@ -8,9 +8,11 @@ import ProductDetail from "./pages/productDetail/ProductDetail";
 import Cart from "./pages/cart/Cart";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
+import { context, contextProvider } from "./context/Context";
+// import { contextProvider } from "./context/Context";
 
 function App() {
-  const [showHeaderFooter, setShowHeaderFooter] = useState(true);
+  const { showHeaderFooter } = contextProvider();
 
   return (
     <div>
@@ -21,14 +23,8 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
-          <Route
-            path="/login"
-            element={<Login setShowHeaderFooter={setShowHeaderFooter} />}
-          />
-          <Route
-            path="/signup"
-            element={<Signup setShowHeaderFooter={setShowHeaderFooter} />}
-          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
         {showHeaderFooter && <Footer />}
       </BrowserRouter>

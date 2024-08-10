@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { MdClose } from "react-icons/md";
+import { contextProvider } from "../../context/Context";
 
 function Cart() {
   const [itemQty, setItemQty] = useState(0);
+
+  const { setShowHeaderFooter } = contextProvider();
+
+  useEffect(() => {
+    setShowHeaderFooter(true);
+  }, []);
+
   return (
     <div className=" md:mx-[80px] w-full flex gap-10 my-10">
       <div className="md:w-[55%] ">

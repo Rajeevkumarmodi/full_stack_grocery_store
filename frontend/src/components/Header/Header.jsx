@@ -8,12 +8,12 @@ import SearchBox from "./SearchBox";
 import "../../App.css";
 import { Button } from "@mui/material";
 import { IoMenu } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 function Header() {
   const [isOpenAllCategory, setIsOpenCategory] = useState(false);
-
-  // const endPoint = useLocation();
-  // console.log(endPoint);
+  const navigate = useNavigate();
+  let isLogin = false;
 
   return (
     <div>
@@ -40,11 +40,26 @@ function Header() {
           <CountryDropDown />
           <SearchBox />
 
-          <div className="userContainer flex items-center justify-center  w-[40px] h-[40px] rounded-[50%] border-[1px] border-gray-300 text-center">
-            <Button className="userBtn">
-              <FaRegUser className="text-xl text-black" />
+          {isLogin ? (
+            <div className="userContainer flex items-center justify-center  w-[40px] h-[40px] rounded-[50%] border-[1px] border-gray-300 text-center">
+              <Button className="userBtn">
+                <FaRegUser className="text-xl text-black" />
+              </Button>
+            </div>
+          ) : (
+            <Button
+              onClick={() => navigate("/login")}
+              style={{
+                background: "blue",
+                color: "white",
+                textTransform: "capitalize",
+                padding: "5px 20px",
+              }}
+            >
+              Login
             </Button>
-          </div>
+          )}
+
           <Link to="/cart" className="flex items-center gap-2 cursor-pointer ">
             <p className="font-bold">$200</p>
             <div className="relative bg-orange-100 w-[40px] h-[40px] flex items-center justify-center rounded-full">

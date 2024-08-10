@@ -11,10 +11,17 @@ import "../../App.css";
 import AdditionalInfo from "./components/AdditionalInfo";
 import Reviews from "./components/Reviews";
 import ProductItem from "../../components/ProductItem";
+import { contextProvider } from "../../context/Context";
 
 function ProductDetail() {
   const [itemQty, setItemQty] = useState(0);
   const [selectedTab, setSelectedTab] = useState("description");
+
+  const { setShowHeaderFooter } = contextProvider();
+
+  useEffect(() => {
+    setShowHeaderFooter(true);
+  }, []);
 
   useEffect(() => {
     scrollTo(0, 0);

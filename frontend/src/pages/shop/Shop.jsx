@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import banner from "../../assets/shop-banner.png";
 import Navigator from "../../components/Navigator";
@@ -11,6 +11,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ProductItem from "../../components/ProductItem";
 import Pagination from "@mui/material/Pagination";
+import { contextProvider } from "../../context/Context";
 
 function Shop() {
   const [sortBy, setSortBy] = useState(null);
@@ -18,6 +19,12 @@ function Shop() {
   const [selectedSortBy, setSelectedSortBy] = useState("Sort by popularity");
   const [selectedShowItem, setSelectedShowItem] = useState(12);
   const [showItemEachRow, setShowItemEachRow] = useState(4);
+
+  const { setShowHeaderFooter } = contextProvider();
+
+  useEffect(() => {
+    setShowHeaderFooter(true);
+  }, []);
 
   const sortByOpen = Boolean(sortBy);
   const numberOfShowModal = Boolean(numberOfShow);
