@@ -7,13 +7,16 @@ function Cart() {
   return (
     <div className=" md:mx-[80px] w-full flex gap-10 my-10">
       <div className="md:w-[55%] ">
-        <table className="border-2 w-full rounded-md shadow-md">
+        <h3 className="text-xl font-semibold">Your Cart</h3>
+        <p className="mb-5 mt-1">There are 3 products in your cart</p>
+        <table className=" w-full ">
           <thead className="border-b">
-            <tr className="">
+            <tr className="bg-gray-100">
               <th className="py-4">Product</th>
               <th className="py-4">Price</th>
               <th className="py-4">Quantity</th>
               <th className="py-4">Subtotal</th>
+              <th className="py-4"></th>
             </tr>
           </thead>
           <tbody className="">
@@ -73,17 +76,7 @@ function Cart() {
 
           <div className="flex justify-between py-5 border-b">
             <p className="font-semibold">Shipping</p>
-            <div>
-              <div className="flex items-center gap-2 font-medium">
-                <label htmlFor="freeShipping">Free shipping</label>
-                <input type="radio" id="freeShipping" />
-              </div>
-
-              <div className="flex items-center gap-2 font-medium">
-                <label htmlFor="localPickup">Local pickup</label>
-                <input type="radio" id="localPickup" />
-              </div>
-            </div>
+            <p className="font-semibold">Free</p>
           </div>
 
           <p className="flex justify-between py-4 border-b font-semibold">

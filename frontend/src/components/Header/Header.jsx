@@ -8,7 +8,7 @@ import SearchBox from "./SearchBox";
 import "../../App.css";
 import { Button } from "@mui/material";
 import { IoMenu } from "react-icons/io5";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 function Header() {
   const [isOpenAllCategory, setIsOpenCategory] = useState(false);
 
@@ -45,7 +45,7 @@ function Header() {
               <FaRegUser className="text-xl text-black" />
             </Button>
           </div>
-          <div className="flex items-center gap-2 cursor-pointer ">
+          <Link to="/cart" className="flex items-center gap-2 cursor-pointer ">
             <p className="font-bold">$200</p>
             <div className="relative bg-orange-100 w-[40px] h-[40px] flex items-center justify-center rounded-full">
               <FaShoppingBag className="text-xl" />
@@ -53,7 +53,7 @@ function Header() {
                 0
               </span>
             </div>
-          </div>
+          </Link>
         </div>
       </header>
       {/*Header codde end  */}
