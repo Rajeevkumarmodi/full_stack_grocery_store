@@ -1,13 +1,10 @@
 import express from "express";
-import { storage } from "../utils/cloudinary";
-import multer from "multer";
+import uploader from "../utils/multerConfig.js";
+import { allCategory, create } from "../controllers/category.controller.js";
 
 const router = express.Router();
 
-const uploader = multer({ storage });
-
-router.get("/create", (req, res) => {
-  res.send("category created");
-});
+router.post("/create", uploader.single("image"), create);
+router.get("/", allCategory);
 
 export default router;

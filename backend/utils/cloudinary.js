@@ -1,5 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
-import { CloudinaryStorage } from "multer-storage-cloudinary";
+// import { CloudinaryStorage } from "multer-storage-cloudinary";
+import dotenv from "dotenv";
+dotenv.config();
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -7,20 +9,13 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export const storage = new CloudinaryStorage({
-  cloudinary,
-  params: {
-    folder: "grocery_store_images",
-    allowedFormats: ["jpeg", "png", "jpg"],
-  },
-});
-
-const uploadOnCloudinary = async (localFilePath) => {
+export const uploadOnCloudinary = async (localFilePath) => {
   try {
     if (!localFilePath) return null;
 
     // upload file on cloudinary
     const response = await cloudinary.uploader.upload(localFilePath, {
+      folder: "grocery_store_images",
       resource_type: "auto",
     });
     return response;
@@ -28,5 +23,3 @@ const uploadOnCloudinary = async (localFilePath) => {
     return null;
   }
 };
-
-export { uploadOnCloudinary };
