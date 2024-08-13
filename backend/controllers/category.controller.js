@@ -1,7 +1,6 @@
-import path from "path";
 import {
   deleteImageFromCloudinary,
-  uploadOnCloudinary,
+  uploadFilesOnCloudinary,
 } from "../utils/cloudinary.js";
 import Category from "../models/category.model.js";
 
@@ -9,7 +8,6 @@ import Category from "../models/category.model.js";
 export async function create(req, res) {
   const { name } = req.body;
   const file = req?.file;
-  const extension = path.extname(file?.originalname);
 
   if (!name) {
     return res
@@ -23,24 +21,10 @@ export async function create(req, res) {
       .json({ success: false, message: "Please provide image" });
   }
 
-  if (extension !== ".png" && extension !== ".jpg" && extension !== ".jpeg") {
-    return res.status(201).json({
-      success: false,
-      message: "only .png , .jpeg , jpg formate allowed",
-    });
-  }
-
-  if (req.file.size > 512000) {
-    return res.status(404).json({
-      success: false,
-      message: "please provide image size less then 500kb",
-    });
-  }
-
   //   upload on cloudinary
 
   try {
-    const result = await uploadOnCloudinary(file?.path);
+    const result = await uploadFilesOnCloudinary(file?.path);
 
     if (!result) {
       return res
@@ -107,7 +91,6 @@ export async function updateCategory(req, res) {
   let { id } = req.params;
   const { name } = req.body;
   const file = req?.file;
-  const extension = file ? path.extname(file?.originalname) : "";
 
   if (!name) {
     return res
@@ -133,24 +116,8 @@ export async function updateCategory(req, res) {
         .json({ success: true, message: "category update" });
     }
 
-    // file is present
-
-    if (extension !== ".png" && extension !== ".jpg" && extension !== ".jpeg") {
-      return res.status(201).json({
-        success: false,
-        message: "only .png , .jpeg , jpg formate allowed",
-      });
-    }
-
-    if (req.file.size > 512000) {
-      return res.status(404).json({
-        success: false,
-        message: "please provide image size less then 500kb",
-      });
-    }
-
     // upload image
-    const result = await uploadOnCloudinary(file?.path);
+    const result = await uploadFilesOnCloudinary(file?.path);
     if (!result) {
       return res
         .status(404)

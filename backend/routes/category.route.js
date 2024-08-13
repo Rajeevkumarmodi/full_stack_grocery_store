@@ -1,17 +1,34 @@
+import uploader from "../middleware/multerConfig.js";
 import express from "express";
-import uploader from "../utils/multerConfig.js";
 import {
   allCategory,
   create,
   deleteCategory,
   updateCategory,
 } from "../controllers/category.controller.js";
+import multerErrorHandler from "../middleware/multerErrorHandler.js";
 
 const router = express.Router();
 
-router.post("/create", uploader.single("image"), create);
+// create category route
+router.post(
+  "/create",
+  (req, res, next) => {
+    uploader.single("image")(req, res, multerErrorHandler(req, res, next));
+  },
+  create
+);
+
 router.get("/", allCategory);
 router.delete("/:id", deleteCategory);
-router.put("/:id", uploader.single("image"), updateCategory);
+
+// update category route
+router.put(
+  "/:id",
+  (req, res, next) => {
+    uploader.single("image")(req, res, multerErrorHandler(req, res, next));
+  },
+  updateCategory
+);
 
 export default router;

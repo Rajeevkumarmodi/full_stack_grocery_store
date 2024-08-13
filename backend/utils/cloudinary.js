@@ -9,19 +9,29 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// upload file
-
-export const uploadOnCloudinary = async (localFilePath) => {
+// upload single file
+export const uploadFilesOnCloudinary = async (localFilePaths) => {
   try {
-    if (!localFilePath) return null;
+    // If localFilePaths is a single string, convert it to an array
+    if (!localFilePaths) return null;
+    if (!Array.isArray(localFilePaths)) {
+      localFilePaths = [localFilePaths];
+    }
 
-    // upload file on cloudinary
-    const response = await cloudinary.uploader.upload(localFilePath, {
-      folder: "grocery_store_images",
-      resource_type: "auto",
+    const uploadPromises = localFilePaths.map((filePath) => {
+      return cloudinary.uploader.upload(filePath, {
+        folder: "grocery_store_images",
+        resource_type: "auto",
+      });
     });
-    return response;
+
+    // Wait for all uploads to complete
+    const responses = await Promise.all(uploadPromises);
+
+    // If only one file was uploaded, return the first response
+    return responses.length === 1 ? responses[0] : responses;
   } catch (error) {
+    console.error("Error uploading files:", error);
     return null;
   }
 };
