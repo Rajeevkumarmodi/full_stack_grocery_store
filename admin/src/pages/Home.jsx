@@ -1,7 +1,12 @@
 import React from "react";
+import Layout from "../components/Layout";
 
 function Home() {
-  return <div>home</div>;
+  return (
+    <Layout>
+      <div className=" h-[120vh]">Home</div>
+    </Layout>
+  );
 }
 
 export default Home;
