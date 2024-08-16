@@ -9,7 +9,9 @@ function Layout({ children }) {
       <div className=" w-full flex flex-col max-h-[100vh]">
         <Header />
         <main className="flex-1 min-w-0 overflow-auto">
-          <div className="bg-gray-100 flex  justify-center">{children}</div>
+          <div className="bg-[#F5F5F9] h-full flex justify-center">
+            {children}
+          </div>
         </main>
       </div>
     </div>
