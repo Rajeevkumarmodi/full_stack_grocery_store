@@ -37,7 +37,6 @@ function SideBar() {
           icon={<MdDashboard />}
         >
           <Button sx={btn}>
-            {" "}
             <PiDotOutlineFill className="text-3xl text-gray-500" /> Dashboard
           </Button>
         </Accordion>

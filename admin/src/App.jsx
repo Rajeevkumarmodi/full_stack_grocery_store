@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Header from "./components/Header";
-import SideBar from "./components/SideBar";
+import { Toaster } from "react-hot-toast";
+
 import AddCategory from "./pages/AddCategory";
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
           <Route path="/add-category" element={<AddCategory />} />
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </div>
   );
 }

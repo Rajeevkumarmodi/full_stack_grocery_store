@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import categoryRoute from "./routes/category.route.js";
 import productRoute from "./routes/product.route.js";
 dotenv.config();
@@ -10,6 +11,7 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/product", productRoute);

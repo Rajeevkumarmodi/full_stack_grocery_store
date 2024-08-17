@@ -4,14 +4,54 @@ import { Link } from "react-router-dom";
 import { IoMdHome } from "react-icons/io";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { Button } from "@mui/material";
-
+import { getData, createCategory } from "../api/api";
+import toast, { Toaster } from "react-hot-toast";
+import Loader from "../components/Loader";
 function AddCategory() {
+  const [loading, setLoading] = useState(false);
   const [image, setImage] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    image: "",
+  });
 
   function handleFileChange(e) {
+    setFormData({ ...formData, image: e.target.files[0] });
     let url = URL.createObjectURL(e.target.files[0]);
     setImage(url);
+
+    // console.log("file", e.target.files[0]);
   }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!formData.name || !formData.image) {
+      toast.error("all fields are required");
+      return;
+    }
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("image", formData.image);
+
+    setLoading(true);
+    const response = await createCategory(data, "category/create");
+    if (response.success) {
+      console.log("ya response is comming on", response);
+      toast.success(response.message);
+      setLoading(false);
+      setFormData({
+        name: "",
+        image: "",
+      });
+      setImage("");
+    } else {
+      console.log("response", response);
+      setLoading(false);
+      toast.error(response.message);
+    }
+  }
+
   return (
     <Layout>
       <div className="w-[100%] ">
@@ -31,7 +71,10 @@ function AddCategory() {
 
         {/* form */}
 
-        <form className="bg-white shadow-md  w-[60%] mx-auto px-5 py-5 rounded-md">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white shadow-md  w-[60%] mx-auto px-5 py-5 rounded-md"
+        >
           <div className="flex flex-col gap-1">
             <label htmlFor="name">Category Name</label>
             <input
@@ -39,6 +82,10 @@ function AddCategory() {
               type="text"
               placeholder="Enter category name"
               id="name"
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              value={formData.name}
             />
           </div>
 
@@ -65,9 +112,18 @@ function AddCategory() {
           </div>
 
           <div className="mt-5">
-            <Button type="submit" id="addCategory">
-              <FaCloudUploadAlt className="mr-2 text-xl" />
-              Add Category
+            <Button disabled={loading} type="submit" id="addCategory">
+              {loading ? (
+                <>
+                  <Loader color="white" />{" "}
+                  <span className="ml-4">Loading...</span>
+                </>
+              ) : (
+                <>
+                  <FaCloudUploadAlt className="mr-2 text-xl" />
+                  Add Category
+                </>
+              )}
             </Button>
           </div>
         </form>

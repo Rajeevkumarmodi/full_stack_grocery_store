@@ -8,7 +8,7 @@ const uploader = multer({
   limits: { fileSize: MAX_SIZE },
   fileFilter: (req, file, cb) => {
     // Allowed extensions
-    const allowedExtensions = /png|jpg|jpeg/;
+    const allowedExtensions = /png|jpg|jpeg|webp/;
 
     // Get the file extension
     const extname = allowedExtensions.test(file.originalname.toLowerCase());
@@ -18,7 +18,7 @@ const uploader = multer({
     if (extname && mimetype) {
       return cb(null, true);
     } else {
-      cb(new Error("Only .png, .jpg, and .jpeg formats allowed!"));
+      cb(new Error("Only .png, .jpg,.jpeg and .webp formats allowed!"));
     }
   },
 });

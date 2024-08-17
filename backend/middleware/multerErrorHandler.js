@@ -8,18 +8,24 @@ const multerErrorHandler = (req, res, next) => {
         if (err.code === "LIMIT_FILE_SIZE") {
           return res
             .status(400)
-            .json({ error: "File size should be less than 500 KB" });
+            .json({
+              success: false,
+              message: "File size should be less than 500 KB",
+            });
         }
       } else if (
-        err.message === "Only .png, .jpg, and .jpeg formats allowed!"
+        err.message === "Only .png, .jpg,.jpeg and .webp formats allowed!"
       ) {
         // Handle custom file filter error
-        return res.status(400).json({ error: err.message });
+        return res.status(400).json({ success: false, message: err.message });
       } else {
         // Handle any other errors
         return res
           .status(500)
-          .json({ error: "An error occurred during the upload" });
+          .json({
+            success: false,
+            message: "An error occurred during the upload",
+          });
       }
     }
     // If no errors, proceed to the next middleware/controller
