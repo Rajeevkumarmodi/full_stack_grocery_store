@@ -70,8 +70,10 @@ function SideBar() {
             </Link>
           </Button>
           <Button sx={btn}>
-            <PiDotOutlineFill className="text-3xl text-gray-500" />
-            Categories
+            <Link className="flex items-center" to="/categories">
+              <PiDotOutlineFill className="text-3xl text-gray-500" />
+              Categories
+            </Link>
           </Button>
         </Accordion>
       </div>

@@ -24,3 +24,12 @@
     color: white;
     width: 100%;
 }
+
+#addNewCategoryBtn {
+    text-transform: capitalize;
+    background-color: rgb(97, 97, 250);
+    color: white;
+    width: 100%;
+    width: auto;
+    padding-block: 2px;
+}

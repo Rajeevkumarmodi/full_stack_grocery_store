@@ -5,7 +5,7 @@ import { IoMdHome } from "react-icons/io";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { Button } from "@mui/material";
 import { getData, createCategory } from "../api/api";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import Loader from "../components/Loader";
 function AddCategory() {
   const [loading, setLoading] = useState(false);

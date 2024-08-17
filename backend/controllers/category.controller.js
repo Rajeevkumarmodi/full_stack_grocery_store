@@ -46,11 +46,32 @@ export async function create(req, res) {
 // read all category
 
 export async function allCategory(req, res) {
+  const query = req.query;
+  let pageNo = query.page ? query.page : 1;
+
   try {
-    let allCategory = await Category.find();
-    res
-      .status(200)
-      .json({ success: true, message: "data found", data: allCategory });
+    let totalNoOfCategory = await Category.countDocuments();
+    let totalPage = Math.ceil(totalNoOfCategory / 4);
+
+    if (totalPage < pageNo) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Invalid page number" });
+    }
+
+    let allCategory = await Category.find()
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .skip(pageNo * 4 - 4);
+    res.status(200).json({
+      success: true,
+      message: "data found",
+      data: {
+        totalPage,
+        totalResult: totalNoOfCategory,
+        categories: allCategory,
+      },
+    });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
