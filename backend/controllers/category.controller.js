@@ -77,6 +77,35 @@ export async function allCategory(req, res) {
   }
 }
 
+// read single category
+export async function singleCategory(req, res) {
+  const { id } = req.params;
+
+  try {
+    if (!id) {
+      return res
+        .status(404)
+        .json({ success: false, message: "plrase provide id" });
+    }
+
+    let category = await Category.findById(id);
+
+    if (!category) {
+      return res
+        .status(404)
+        .json({ success: false, message: "plrase provide valid id" });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "data found",
+      data: category,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+}
+
 // deletee category
 
 export async function deleteCategory(req, res) {

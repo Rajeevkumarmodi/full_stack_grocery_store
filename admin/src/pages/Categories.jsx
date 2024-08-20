@@ -1,22 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMdHome } from "react-icons/io";
-import toast, { Toaster } from "react-hot-toast";
+import { MdClose } from "react-icons/md";
+import { FaCloudUploadAlt } from "react-icons/fa";
+
+import toast from "react-hot-toast";
 import Layout from "../components/Layout";
 import { Button, Pagination } from "@mui/material";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { getData } from "../api/api";
+import { deleteData, getData, updateData } from "../api/api";
 import Skeleton from "@mui/material/Skeleton";
 import LinearProgress from "@mui/material/LinearProgress";
 import IconButton from "@mui/material/IconButton";
+import Dialog from "@mui/material/Dialog";
 
 import Tooltip from "@mui/material/Tooltip";
+import Loader from "../components/Loader";
 
 function Categories() {
   const [categoriesData, setCategoriesData] = useState({});
   const [loding, setLoging] = useState(true);
   const [pageNo, setPageNo] = useState(1);
+  const [image, setImage] = useState("");
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [editLoding, setEditLoding] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    image: "",
+  });
 
   async function fetchData() {
     setLoging(true);
@@ -28,6 +40,52 @@ function Categories() {
       setCategoriesData(response.data);
     } else {
       setLoging(false);
+      toast.error(response.message);
+    }
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("image", formData.image);
+
+    setEditLoding(true);
+    const response = await updateData(data, "category/" + formData._id);
+    if (response.success) {
+      toast.success(response.message);
+      setEditDialogOpen(false);
+      fetchData();
+    } else {
+      toast.success(response.message);
+    }
+    setEditLoding(false);
+  }
+
+  async function handleCLickEditBtn(id) {
+    const response = await getData("category/" + id);
+    if (response.success) {
+      setEditDialogOpen(true);
+      setFormData(response.data);
+      setImage(response.data?.image);
+    } else {
+      toast.error(response.message);
+    }
+    console.log("response", response);
+  }
+
+  function handleFileChange(e) {
+    setFormData({ ...formData, image: e.target.files[0] });
+    let url = URL.createObjectURL(e.target.files[0]);
+    setImage(url);
+  }
+
+  async function handleDelete(id) {
+    const response = await deleteData("category/" + id);
+    if (response.success) {
+      fetchData();
+      toast.success(response.message);
+    } else {
       toast.error(response.message);
     }
   }
@@ -102,15 +160,21 @@ function Categories() {
                         />
                       </td>
                       <td className="text-center">{item.name}</td>
-                      <td className=" flex gap-2 justify-center relative bottom-[25px] items-center ">
+                      <td className=" flex gap-2 justify-center relative bottom-[20px] items-center ">
                         <Tooltip title="Delete" placement="top-start">
                           <IconButton>
-                            <MdDelete className="text-xl cursor-pointer text-red-600" />
+                            <MdDelete
+                              onClick={() => handleDelete(item._id)}
+                              className="text-xl cursor-pointer text-red-600"
+                            />
                           </IconButton>
                         </Tooltip>
                         <Tooltip title="Edit" placement="top-start">
                           <IconButton>
-                            <FaEdit className="text-xl cursor-pointer text-blue-600" />
+                            <FaEdit
+                              onClick={() => handleCLickEditBtn(item._id)}
+                              className="text-xl cursor-pointer text-blue-600"
+                            />
                           </IconButton>
                         </Tooltip>
                       </td>
@@ -136,6 +200,79 @@ function Categories() {
             />
           </div>
         </div>
+
+        {/* edit modal */}
+
+        <Dialog
+          onClose={() => setEditDialogOpen(false)}
+          open={editDialogOpen}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <div className="absolute right-2 top-2">
+            <MdClose
+              onClick={() => setEditDialogOpen(false)}
+              className="text-2xl hover:text-red-600 hover:scale-110 cursor-pointer"
+            />
+          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white shadow-md  w-[60%] mx-auto px-5 py-5 rounded-md min-w-full"
+          >
+            <div className="flex flex-col gap-1">
+              <label htmlFor="name">Category Name</label>
+              <input
+                className="border-[1.5px] px-3 py-1 rounded-md border-gray-300 outline-none"
+                type="text"
+                placeholder="Enter category name"
+                id="name"
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                value={formData.name}
+              />
+            </div>
+
+            <div className="flex items-center justify-between mt-2">
+              <div className="flex flex-col gap-1 mt-5">
+                <label htmlFor="name"> Category Image</label>
+                <input
+                  onChange={(e) => handleFileChange(e)}
+                  type="file"
+                  id="name"
+                />
+              </div>
+              <div className=" w-[80px] h-[80px] border-2 rounded-md">
+                {image ? (
+                  <img
+                    className="w-full h-full object-cover"
+                    src={image}
+                    alt="image"
+                  />
+                ) : (
+                  <p className="text-center mt-6">Preview</p>
+                )}
+              </div>
+            </div>
+
+            <div className="mt-5">
+              <Button disabled={editLoding} type="submit" id="addCategory">
+                {editLoding ? (
+                  <>
+                    <Loader color="white" />{" "}
+                    <span className="ml-4">Loading...</span>
+                  </>
+                ) : (
+                  <>
+                    <FaCloudUploadAlt className="mr-2 text-xl" />
+                    Edit Category
+                  </>
+                )}
+              </Button>
+            </div>
+          </form>
+        </Dialog>
       </div>
     </Layout>
   );

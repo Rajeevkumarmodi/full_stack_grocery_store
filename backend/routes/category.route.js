@@ -4,6 +4,7 @@ import {
   allCategory,
   create,
   deleteCategory,
+  singleCategory,
   updateCategory,
 } from "../controllers/category.controller.js";
 import multerErrorHandler from "../middleware/multerErrorHandler.js";
@@ -20,6 +21,7 @@ router.post(
 );
 
 router.get("/", allCategory);
+router.get("/:id", singleCategory);
 router.delete("/:id", deleteCategory);
 
 // update category route
